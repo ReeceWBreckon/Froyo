@@ -11,7 +11,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity {
+public class Review extends AppCompatActivity {
     DatabaseHandler dh = new DatabaseHandler(this);
     int paws;
     String comments;
