@@ -153,7 +153,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         values.put(COL_NAME, d.getName());
         values.put(COL_OWNER, d.getOwner());
         values.put(COL_AVG_DIS, "nil");
-        values.put(COL_NO_WALKS, d.getTotwalks());
+        values.put(COL_TOT_WALKS, d.getTotwalks());
         values.put(COL_TOT_DIS, d.getTotdistance());
 
         db.insert(DOG_TABLE_NAME,null,values);
@@ -256,7 +256,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     }
 
 
-    public List<Dog> getAllDogs(){
+    /*public List<Dog> getAllDogs(){
         ArrayList<Dog> list = new ArrayList<Dog>();
         SQLiteDatabase db = getReadableDatabase();
 
@@ -279,7 +279,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         }
 
         return list;
-    }
+    }*/
 
 
     public List<Walk> getAllWalks(){

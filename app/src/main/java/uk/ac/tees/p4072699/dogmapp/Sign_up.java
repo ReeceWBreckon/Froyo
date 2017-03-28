@@ -29,6 +29,8 @@ public class Sign_up extends AppCompatActivity implements View.OnClickListener {
 
     }
 
+
+    /*TEST FOR PUSH*/
     @Override
     public void onClick(View v) {
         Intent i;
