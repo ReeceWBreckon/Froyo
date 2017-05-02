@@ -1,12 +1,125 @@
 <resources>
     <string name="app_name">Dog Mapp</string>
+    <string name="Help">Help</string>
+    <string name="dogs">Dogs</string>
+    <string name="profile">Profile</string>
+
+    <!--String for activity_add_dog and activity_dog_list-->
+    <string name="add">Add Dog</string>
+    <string name="remove">Remove Dog</string>
+    <string name="home">Home</string>
+    <string name="dogname">Dog Name</string>
+
+    <!-- Strings and hints for log in and sign up-->
+    <string name="sign_up">Sign up</string>
+    <string name="Log_in">Log in</string>
+    <string name="e_hint"> Email</string>
+    <string name="p_hint">Password</string>
+    <string name="n_hint">Name</string>
+    <string name="p_con_hint">Confirm Password</string>
+    <string name="retur">Return</string>
+
+    <!-- String for activity_review page -->
     <string name="review_walk">Review Walk</string>
     <string name="comments">Comments</string>
     <string name="rating">Rating</string>
     <string name="save">Save</string>
     <string name="cancel">Cancel</string>
-    <string name="add">Add Dog</string>
-    <string name="remove">Remove Dog</string>
-    <string name="home">Home</string>
-    <string name="dogname">Dog Name</string>
+    <string name="title_activity_login">Sign in</string>
+
+    <!-- Map Page -->
+    <string name="map">Map</string>
+
+    <string name="review">Reviews</string>
+    <string name="addrev">Add Review</string>
+    <string name="rem">Remove</string>
+    <string name="start">Start</string>
+    <string name="startw">Start Walk</string>
+    <string name="choosedogs">Choose dogs for the walk</string>
+
+    <string name="Help_content">Dogmapp is an app that allows you to create walks and share them with other users. It allows you to socialise with other dog
+    owners and organise walks. You can make profiles for each of the your dogs where stats from each walk your pet has been on will be saved. Once you have
+    started a walk dogmapp will track where you are and when your walk is complete, you can save the walk, give the walk a review and share it.\nFor any futher
+    assistance with Dogmapp please email p4072699@tees.ac.uk.</string>
+    <string name="title_activity_walk_map">Map</string>
+    <string name="title_activity_maps">Map</string>
+
+    <!-- Profile Page -->
+    <string name="tot_walks">Total Walks</string>
+    <string name="avg_walks">Average Walk Length</string>
+
+    <string name="end">End Walk</string>
+    <string name="title_activity_settings">Settings</string>
+
+    <!-- Strings related to Settings -->
+
+    <!-- Example General settings -->
+    <string name="pref_header_general">General</string>
+
+    <string name="pref_title_social_recommendations">Enable social recommendations</string>
+    <string name="pref_description_social_recommendations">Recommendations for people to contact
+        based on your message history
+    </string>
+
+    <string name="pref_title_display_name">Display name</string>
+    <string name="pref_default_display_name">John Smith</string>
+
+    <string name="pref_title_add_friends_to_messages">Add friends to messages</string>
+    <string-array name="pref_example_list_titles">
+        <item>Always</item>
+        <item>When possible</item>
+        <item>Never</item>
+    </string-array>
+    <string-array name="pref_example_list_values">
+        <item>1</item>
+        <item>0</item>
+        <item>-1</item>
+    </string-array>
+
+    <!-- Example settings for Data & Sync -->
+    <string name="pref_header_data_sync">Data &amp; sync</string>
+
+    <string name="pref_title_sync_frequency">Sync frequency</string>
+    <string-array name="pref_sync_frequency_titles">
+        <item>15 minutes</item>
+        <item>30 minutes</item>
+        <item>1 hour</item>
+        <item>3 hours</item>
+        <item>6 hours</item>
+        <item>Never</item>
+    </string-array>
+    <string-array name="pref_sync_frequency_values">
+        <item>15</item>
+        <item>30</item>
+        <item>60</item>
+        <item>180</item>
+        <item>360</item>
+        <item>-1</item>
+    </string-array>
+
+    <string-array name="list_preference_entries">
+        <item>Entry 1</item>
+        <item>Entry 2</item>
+        <item>Entry 3</item>
+    </string-array>
+
+    <string-array name="list_preference_entry_values">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
+
+    <string-array name="multi_select_list_preference_default_value" />
+
+    <string name="pref_title_system_sync_settings">System sync settings</string>
+
+    <!-- Example settings for Notifications -->
+    <string name="pref_header_notifications">Notifications</string>
+
+    <string name="pref_title_new_message_notifications">New message notifications</string>
+
+    <string name="pref_title_ringtone">Ringtone</string>
+    <string name="pref_ringtone_silent">Silent</string>
+
+    <string name="pref_title_vibrate">Vibrate</string>
 </resources>
