@@ -32,7 +32,11 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.Polyline;
 import com.google.android.gms.maps.model.PolylineOptions;
 
+import java.sql.Time;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback,
         GoogleApiClient.ConnectionCallbacks,
@@ -42,28 +46,35 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private GoogleMap map;
     GoogleApiClient googleAPI;
     LocationRequest locRequest;
+    Location prevLocation;
     Location location;
     LocationManager lm;
     Owner owner;
+    Bundle lisbun;
     DatabaseHandler dh = new DatabaseHandler(this);
-    private ArrayList<LatLng> points; //added
-    Polyline line; //added
+    double totaldis;
+    ArrayList<LatLng> points;
+    Polyline line;
+    LatLng oldlatlng;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
 
-        locRequest = LocationRequest.create()
-                .setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY)
-                .setInterval(10);
-
-        lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-        lm.requestLocationUpdates(LocationManager.GPS_PROVIDER, 400, 1, this);
+        lisbun = getIntent().getExtras().getBundle("bundle");
+        points = new ArrayList<LatLng>();
 
         if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            checkLocationPermission();
+            if (checkLocationPermission() == true) {
+                locRequest = LocationRequest.create()
+                        .setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY)
+                        .setInterval(10);
+                lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+                lm.requestLocationUpdates(LocationManager.GPS_PROVIDER, 400, 1, this);
+            }
         }
+
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
@@ -72,11 +83,20 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         owner = (Owner) getIntent().getSerializableExtra("owner");
 
+
         rev.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 Intent i = new Intent(con, Review.class);
                 i.putExtra("owner", dh.getOwnerHelper(owner));
+                Calendar c = new GregorianCalendar();
+                String e = c.getTime().toString();
+                i.putExtra("end", e);
+                String s = getIntent().getStringExtra("start");
+                i.putExtra("start", s);
+                i.putExtra("dis", totaldis);
+                i.putExtra("bundle",lisbun);
                 startActivity(i);
             }
         });
@@ -116,9 +136,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 == PackageManager.PERMISSION_GRANTED) {
             location = LocationServices.FusedLocationApi.getLastLocation(googleAPI);
             if (location == null) {
-                Log.d("loc", "null");
             } else {
-                Log.d("loc", "not null");
                 handleNewLocation(location);
             }
         }
@@ -133,11 +151,21 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         Log.d("loc", location.toString());
         double currentLatitude = location.getLatitude();
         double currentLongitude = location.getLongitude();
-        LatLng latLng = new LatLng(currentLatitude, currentLongitude);
+
+        LatLng newlatLng = new LatLng(currentLatitude, currentLongitude);
+        if (prevLocation != null) {
+            oldlatlng = new LatLng(prevLocation.getLatitude(), prevLocation.getLongitude());
+            totaldis += CalculationByDistance(oldlatlng, newlatLng);
+        }
+
         MarkerOptions options = new MarkerOptions()
-                .position(latLng);
+                .position(newlatLng);
         map.addMarker(options);
-        map.moveCamera(CameraUpdateFactory.newLatLng(latLng));
+        float f = 16;
+        map.moveCamera(CameraUpdateFactory.newLatLngZoom(newlatLng, f));
+        points.add(newlatLng);
+        redrawLine();
+        prevLocation = location;
     }
 
     public void redrawLine(){
@@ -145,7 +173,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         PolylineOptions options = new PolylineOptions().width(5).color(Color.BLUE).geodesic(true);
 
-        for (int i = 0; i < points.size(); i++){
+        int f = points.size();
+
+        for (int i = 0; i < f; i++) {
             LatLng point = points.get(i);
             options.add(point);
         }
@@ -159,6 +189,31 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public void onLocationChanged(Location location) {
         Log.d("loc", "changed");
         handleNewLocation(location);
+    }
+
+    public double CalculationByDistance(LatLng StartP, LatLng EndP) {
+        int Radius = 6371;// radius of earth in Km
+        double lat1 = StartP.latitude;
+        double lat2 = EndP.latitude;
+        double lon1 = StartP.longitude;
+        double lon2 = EndP.longitude;
+        double dLat = Math.toRadians(lat2 - lat1);
+        double dLon = Math.toRadians(lon2 - lon1);
+        double a = Math.sin(dLat / 2) * Math.sin(dLat / 2)
+                + Math.cos(Math.toRadians(lat1))
+                * Math.cos(Math.toRadians(lat2)) * Math.sin(dLon / 2)
+                * Math.sin(dLon / 2);
+        double c = 2 * Math.asin(Math.sqrt(a));
+        double valueResult = Radius * c;
+        double km = valueResult / 1;
+        DecimalFormat newFormat = new DecimalFormat("####");
+        int kmInDec = Integer.valueOf(newFormat.format(km));
+        double meter = valueResult % 1000;
+        int meterInDec = Integer.valueOf(newFormat.format(meter));
+        Log.i("Radius Value", "" + valueResult + "   KM  " + kmInDec
+                + " Meter   " + meterInDec);
+
+        return Radius * c;
     }
 
     @Override
