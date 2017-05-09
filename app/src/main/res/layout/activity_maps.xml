@@ -14,9 +14,10 @@
         android:layout_height="match_parent" />
 
     <Button
-        android:text="@string/end"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:id="@+id/button_revScr"
-        android:layout_gravity="center|bottom" />
+        android:layout_width="300px"
+        android:layout_height="100px"
+        android:layout_gravity="center|bottom"
+        android:background="@drawable/button"
+        android:text="@string/end" />
 </FrameLayout>

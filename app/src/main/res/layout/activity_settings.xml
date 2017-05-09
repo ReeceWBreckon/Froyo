@@ -11,12 +11,13 @@
     tools:context="uk.ac.tees.p4072699.dogmapp.Settings">
 
     <Button
-        android:text="@string/retur"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/button_return"
+        android:layout_width="200px"
+        android:layout_height="100px"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:id="@+id/button_return" />
+        android:background="@drawable/button"
+        android:text="@string/retur" />
 
     <TextView
         android:text="@string/title_activity_settings"

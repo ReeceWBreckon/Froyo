@@ -50,100 +50,108 @@
         android:id="@+id/textView3" />
 
     <ImageButton
+        android:id="@+id/paw_3"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        app:srcCompat="@drawable/paw"
-        android:id="@+id/paw_3"
-        android:cropToPadding="false"
-        android:adjustViewBounds="false"
-        android:elevation="0dp"
-        android:scaleType="fitCenter"
         android:layout_below="@+id/textView3"
         android:layout_centerHorizontal="true"
-        android:onClick="paw3" />
+        android:adjustViewBounds="false"
+        android:background="@drawable/button"
+        android:cropToPadding="false"
+        android:elevation="0dp"
+        android:onClick="paw3"
+        android:scaleType="fitCenter"
+        app:srcCompat="@drawable/paw" />
 
     <ImageButton
+        android:id="@+id/paw_2"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        app:srcCompat="@drawable/paw"
-        android:id="@+id/paw_2"
-        android:cropToPadding="false"
-        android:adjustViewBounds="false"
-        android:elevation="0dp"
-        android:scaleType="fitCenter"
         android:layout_alignTop="@+id/paw_3"
         android:layout_toLeftOf="@+id/paw_3"
         android:layout_toStartOf="@+id/paw_3"
-        android:onClick="paw2" />
+        android:adjustViewBounds="false"
+        android:background="@drawable/button"
+        android:cropToPadding="false"
+        android:elevation="0dp"
+        android:onClick="paw2"
+        android:scaleType="fitCenter"
+        app:srcCompat="@drawable/paw" />
 
     <ImageButton
+        android:id="@+id/paw_1"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        app:srcCompat="@drawable/paw"
-        android:id="@+id/paw_1"
-        android:cropToPadding="false"
-        android:adjustViewBounds="false"
-        android:elevation="0dp"
-        android:scaleType="fitCenter"
         android:layout_alignTop="@+id/paw_2"
         android:layout_toLeftOf="@+id/paw_2"
         android:layout_toStartOf="@+id/paw_2"
-        android:onClick="paw1" />
+        android:adjustViewBounds="false"
+        android:background="@drawable/button"
+        android:cropToPadding="false"
+        android:elevation="0dp"
+        android:onClick="paw1"
+        android:scaleType="fitCenter"
+        app:srcCompat="@drawable/paw" />
 
     <ImageButton
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        app:srcCompat="@drawable/paw"
         android:id="@+id/paw_4"
-        android:cropToPadding="false"
-        android:adjustViewBounds="false"
-        android:elevation="0dp"
-        android:scaleType="fitCenter"
-        android:layout_alignTop="@+id/paw_3"
-        android:layout_toRightOf="@+id/paw_3"
-        android:layout_toEndOf="@+id/paw_3"
-        android:onClick="paw4" />
-
-    <ImageButton
         android:layout_width="50dp"
         android:layout_height="50dp"
-        app:srcCompat="@drawable/paw"
-        android:id="@+id/paw_5"
-        android:cropToPadding="false"
+        android:layout_alignTop="@+id/paw_3"
+        android:layout_toEndOf="@+id/paw_3"
+        android:layout_toRightOf="@+id/paw_3"
         android:adjustViewBounds="false"
+        android:background="@drawable/button"
+        android:cropToPadding="false"
         android:elevation="0dp"
+        android:onClick="paw4"
         android:scaleType="fitCenter"
+        app:srcCompat="@drawable/paw" />
+
+    <ImageButton
+        android:id="@+id/paw_5"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:layout_alignTop="@+id/paw_4"
-        android:layout_toRightOf="@+id/paw_4"
         android:layout_toEndOf="@+id/paw_4"
-        android:onClick="paw5" />
+        android:layout_toRightOf="@+id/paw_4"
+        android:adjustViewBounds="false"
+        android:background="@drawable/button"
+        android:cropToPadding="false"
+        android:elevation="0dp"
+        android:onClick="paw5"
+        android:scaleType="fitCenter"
+        app:srcCompat="@drawable/paw" />
 
     <Button
-        android:text="@string/cancel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/button_cancel"
+        android:layout_width="200px"
+        android:layout_height="100px"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:id="@+id/button_cancel" />
+        android:background="@drawable/button"
+        android:text="@string/cancel" />
 
     <Button
-        android:text="@string/save"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/button_save"
+        android:layout_width="200px"
+        android:layout_height="100px"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:id="@+id/button_save" />
+        android:layout_alignParentRight="true"
+        android:background="@drawable/button"
+        android:text="@string/save" />
 
     <ImageButton
+        android:id="@+id/imageButton_settings"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:id="@+id/imageButton_settings"
-        android:scaleType="fitCenter"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:background="@drawable/button"
+        android:scaleType="fitCenter"
         app:srcCompat="@drawable/settings" />
 
     <TextView
