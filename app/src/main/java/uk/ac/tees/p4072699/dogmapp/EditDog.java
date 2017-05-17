@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -13,7 +14,7 @@ public class EditDog extends AppCompatActivity {
     private DatabaseHandler dh = new DatabaseHandler(this);
     private Dog d;
     private Owner owner;
-    private Button save;
+    private Button update;
     private EditText dgname;
 
     //* this class will send you to the edit dog screen so the user can change the details of
@@ -23,31 +24,20 @@ public class EditDog extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         setTitle("Add Dog");
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_dog);
+        setContentView(R.layout.activity_edit_dog);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         owner = (Owner) getIntent().getSerializableExtra("owner");
         final Context con = this;
 
-        save = (Button) findViewById(R.id.button_save2);
-        dgname = (EditText) findViewById(R.id.editText_dgname);
-
-        final Button save = (Button) findViewById(R.id.button_savez);
-        final EditText dgname = (EditText) findViewById(R.id.editText_dgname);
-
-
-        owner = (Owner) getIntent().getSerializableExtra("owner");
+        update = (Button) findViewById(R.id.button_update);
+        dgname = (EditText) findViewById(R.id.editText_editdgname);
         d = (Dog) getIntent().getSerializableExtra("dog");
-
         dgname.setText(d.getName());
 
-
-        save.setOnClickListener(new View.OnClickListener() {
-
-        save.setOnClickListener(new View.OnClickListener(){
-
+        update.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view){
+            public void onClick(View view) {
                 dh.edit(d, dgname.getText().toString());
                 Intent intent = new Intent(con, DogList.class);
                 intent.putExtra("owner", dh.getOwnerHelper(owner));

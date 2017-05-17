@@ -45,12 +45,7 @@ public class DogList extends AppCompatActivity {
 
         for (Dog dg : list) {
             dogs = Arrays.copyOf(dogs, dogs.length + 1);
-
-            Cursor cID = dh.getReadableDatabase().rawQuery("SELECT * FROM " + dh.getOwnerLogintable()
-                    + " WHERE " + dh.getColId() + "=?",new String[]{Integer.toString(dg.getOwnerID())});
-
             dogs[dogs.length - 1] = "Name: " + dg.getName() +"\nOwner: " + dh.getOwnerHelper(owner).getName();
-
             dogsId = Arrays.copyOf(dogsId, dogsId.length + 1);
             dogsId[dogsId.length - 1] = dg.getId();
         }
